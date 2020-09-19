@@ -44,8 +44,8 @@ ySet<-rbind(yTrain,yTest)
 
 # Merges subject data for Train & Test sets. Then creates the final overall merged
 # data set.
-subject<-rbind(subjectTrain,subjectTest)
-mergedData<-cbind(subject, ySet, xSet)
+subjectData<-rbind(subjectTrain,subjectTest)
+mergedData<-cbind(subjectData, ySet, xSet)
 
 # Extracts mean and std data from mergedData, as well as Subject & Code columns.
 extractedData<-select(mergedData, Subject, Code, contains('mean'), contains('std'))
