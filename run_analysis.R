@@ -1,31 +1,42 @@
 library(dplyr)
 
-setwd('C:/Users/damia/Desktop/R/Coursera/Getting and Cleaning Data/ProgrammingAssignment/data/')
+fileName<-'ProgrammingAssignment.zip'
+
+if (!file.exists(fileName)){
+        url<-'https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip'
+        download.file(url, fileName, method = 'curl')
+}
+
+if (!file.exists('UCI HAR Dataset')){
+        unzip(fileName)
+}
+
+#Reads all the data in the unzipped folder.
 
 # Features include all the different kinds of variables that are present in 
 # data files.
-features<-read.table('features.txt', col.names=c('n', 'functions'))
+features<-read.table('UCI HAR Dataset/features.txt', col.names=c('n', 'functions'))
 
 # The different activities done by the 30 subjects which were investigated.
-activities<-read.table('activity_labels.txt', col.names = c('Code', 'Activity'))
+activities<-read.table('UCI HAR Dataset/activity_labels.txt', col.names = c('Code', 'Activity'))
 
 # ID values for what data represents which subject. 9 subjects for the Test study.
-subjectTest<-read.table('test/subject_test.txt', col.names = 'Subject')
+subjectTest<-read.table('UCI HAR Dataset/test/subject_test.txt', col.names = 'Subject')
 
 # 2947 rows of data for the 9 subjects. 
-xTest<-read.table('test/X_test.txt', col.names = features$functions)
+xTest<-read.table('UCI HAR Dataset/test/X_test.txt', col.names = features$functions)
 
 # 2947 rows of data. Codes represent the different activities done.
-yTest<-read.table('test/y_test.txt', col.names = 'Code')
+yTest<-read.table('UCI HAR Dataset/test/y_test.txt', col.names = 'Code')
 
 # # ID values for what data represents which subject. 21 subjects for the Train study.
-subjectTrain<-read.table('train/subject_train.txt', col.names = 'Subject')
+subjectTrain<-read.table('UCI HAR Dataset/train/subject_train.txt', col.names = 'Subject')
 
 # 7352 rows of data for the 21 subjects. 
-xTrain<-read.table('train/X_train.txt', col.names = features$functions)
+xTrain<-read.table('UCI HAR Dataset/train/X_train.txt', col.names = features$functions)
 
 # 7352 rows of data. Codes represent the different activities done.
-yTrain<-read.table('train/y_train.txt', col.names = 'Code')
+yTrain<-read.table('UCI HAR Dataset/train/y_train.txt', col.names = 'Code')
 
 # Merges Train & Test sets.
 xSet<-rbind(xTrain,xTest)
