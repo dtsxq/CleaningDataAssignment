@@ -3,7 +3,7 @@ A repository made for the peer-graded programming assignment which is a part of 
 
 The dataset used for this assignment is [Human Activity Recognition Using Smartphones](https://archive.ics.uci.edu/ml/datasets/human+activity+recognition+using+smartphones#).
 
-##Files:
+## Files:
 
 * **run_analysis.R** - the script which checks for, and downloads & unpacks the data set should it not be present in the working directory. It then reads the files within the data set folder and:
   * merges the 'train' & 'test' data sets together. 
